@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Role extends Model
+class MatchMaking extends Model
 {
     use HasFactory;
-    protected $table = 'roles';
+    protected $table = 'match_makings';
     protected $primaryKey = 'id';
-    protected $fillable = ['name'];
+    protected $fillable = ['mode', 'total_ban'];
 }
