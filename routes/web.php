@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\Lane\LaneEditpage;
-use App\Http\Livewire\Lane\LaneHomepage;
+use App\Http\Livewire\Lane\LaneIndex;
+use App\Http\Livewire\Matchmaking\MatchmakingIndex;
+use App\Http\Livewire\Role\RoleIndex;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,8 @@ Route::get('/', function () {
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
-    Route::get('lane', LaneHomepage::class)->name('lane.homepage');
+    Route::get('lane', LaneIndex::class)->name('lane.homepage');
+    Route::get('hero', LaneIndex::class)->name('hero.homepage');
+    Route::get('role', RoleIndex::class)->name('role.homepage');
+    Route::get('matchmaking', MatchmakingIndex::class)->name('matchmaking.homepage');
 });

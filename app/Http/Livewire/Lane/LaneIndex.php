@@ -2,18 +2,12 @@
 
 namespace App\Http\Livewire\Lane;
 
-use App\Services\LaneService;
+use App\Models\Lane;
 use Livewire\Component;
 
-class LaneHomepage extends Component
+class LaneIndex extends Component
 {
     public $lanes, $laneId, $laneName;
-    private $service;
-
-    public function boot(LaneService $laneService)
-    {
-        $this->service = $laneService;
-    }
 
     /**
      * render blade view
@@ -23,18 +17,32 @@ class LaneHomepage extends Component
 
     public function render()
     {
-        $this->lanes = $this->service->getAll();
+        $this->lanes = Lane::all();
         return view('livewire.lane.index')
             ->extends('layouts.dashboard.main')
             ->section('content');
     }
 
-    public function edit($id)
+    /**
+     * realtime edit
+     *
+     * @param int $id
+     * 
+     * @return void
+     */
+
+    public function edit(int $id): void
     {
-        $data = $this->service->getById($id);
+        $data = Lane::findOrFail($id);
         $this->laneId       = $data->id;
         $this->laneName     = $data->name;
     }
+
+    /**
+     * realtime update 
+     * 
+     * @return void
+     */
 
     public function update()
     {
@@ -42,7 +50,7 @@ class LaneHomepage extends Component
             'laneId'     => 'required',
             'laneName'   => 'required',
         ]);
-        $this->service->getById($this->laneId)->update([
+        Lane::findOrFail($this->laneId)->update([
             'name'  => $this->laneName
         ]);
 
