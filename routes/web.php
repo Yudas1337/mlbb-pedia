@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Livewire\Lane\LaneEditpage;
+use App\Http\Livewire\Lane\LaneHomepage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,4 +27,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin'], function () {
+    Route::get('lane', LaneHomepage::class)->name('lane.homepage');
+});

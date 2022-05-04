@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Hero;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Http;
 
 class HeroSeeder extends Seeder
@@ -16,19 +17,23 @@ class HeroSeeder extends Seeder
 
     public function run()
     {
-        $fetch = Http::acceptJson()
-            ->get(config('mapi.LIST_HERO_API'));
+        $url = config('mapi.LIST_HERO_API');
+        $fetch = Http::acceptJson()->get($url);
 
-        $data = collect($fetch['data'])->sortBy('heroID')->toArray();
-
-        foreach ($data as $list) {
-            Hero::create([
-                'heroid'    => $list['heroID'],
-                'name'      => $list['name'],
-                'picture'   => $list['image'],
-                'hero_role' => 1,
-                'hero_type' => 'test'
-            ]);
+        foreach ($fetch['data'] as $list) {
+            $find = Hero::where('heroid', $list['heroID'])->first();
+            if (!$find) {
+                Hero::updateOrCreate(
+                    ['heroid' => $list['heroID']],
+                    [
+                        'heroid'    => $list['heroID'],
+                        'name'      => $list['name'],
+                        'picture'   => $list['image'],
+                        'hero_role' => Arr::random([5, 6]),
+                        'hero_type' => 'test'
+                    ]
+                );
+            }
         }
     }
 }
