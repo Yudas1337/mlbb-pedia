@@ -1,0 +1,101 @@
+{
+    "status": "success",
+    "message": "All of the paths below should start in this current path.",
+    "data": {
+        "index": [{
+            "path": "/",
+            "description": "Retrieves paths."
+        }, {
+            "path": "/banners",
+            "description": "Retrieves banners."
+        }, {
+            "path": "/hot/banners",
+            "description": "Retrieves hot banners."
+        }, {
+            "path": "/videos?page={page}",
+            "description": "Retrieves specified page videos."
+        }, {
+            "path": "/nation-match",
+            "description": "Retrieves nation match."
+        }, {
+            "path": "/payment/countries",
+            "description": "Retrieves available payment countries."
+        }, {
+            "path": "/guide/banners",
+            "description": "Retrieves guide banners."
+        }, {
+            "path": "/landing",
+            "description": "Retrieves home page."
+        }, {
+            "path": "/sports",
+            "description": "Retrieves sports."
+        }, {
+            "path": "/skillList",
+            "description": "Retrieves skill list."
+        }],
+        "video": [{
+            "path": "/video/detail?id={id}",
+            "description": "Retrieves specified video id detail."
+        }, {
+            "path": "/video/search?query={query}",
+            "description": "Retrieves & Search videos using your query."
+        }],
+        "user": [{
+            "path": "/user/name?id={userID}&zoneID={zoneID}",
+            "description": "Retrieves the specified user name."
+        }, {
+            "path": "/user/heroes?id={userID}",
+            "description": "Retrieves the specified user heroes."
+        }],
+        "news": [{
+            "path": "/news/classify",
+            "description": "Retrieves news classify."
+        }, {
+            "path": "/news/classify/v2",
+            "description": "Retrieves news classify version 2."
+        }],
+        "shop": [{
+            "path": "/shop/items",
+            "description": "Retrieves shop items."
+        }, {
+            "path": "/shop/items/v2",
+            "description": "Retrieves shop items version 2."
+        }],
+        "heroes": [{
+            "path": "/heroes/legends",
+            "description": "Retrieves heroes legends."
+        }],
+        "hero": [{
+            "path": "/hero/list",
+            "description": "Retrieves hero list.",
+            "extra": "?type={heroType}"
+        }, {
+            "path": "/hero/list/v2",
+            "description": "Retrieves hero list version 2."
+        }, {
+            "path": "/hero/list/free",
+            "description": "Retrieves hero list(Free heroes)."
+        }, {
+            "path": "/hero/list/new",
+            "description": "Retrieves new hero list."
+        }, {
+            "path": "/hero/list/legends",
+            "description": "Retrieves hero list(With Legends)."
+        }, {
+            "path": "/hero/skins?name={heroName}",
+            "description": "Retrieves hero skins."
+        }, {
+            "path": "/hero/detail?id={heroID}",
+            "description": "Retrieves hero detail."
+        }, {
+            "path": "/hero/gallery?id={heroID}",
+            "description": "Retrieves hero gallery(pictures)."
+        }, {
+            "path": "/hero/guide?id={heroID}",
+            "description": "Retrieves hero guide."
+        }, {
+            "path": "/hero/price?name={heroName}",
+            "description": "Retrieves hero price."
+        }]
+    }
+}
